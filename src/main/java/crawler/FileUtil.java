@@ -204,4 +204,53 @@ public class FileUtil {
             }
         }
     }
+
+
+    public static void deleteLineByContains(String path, String args) {
+        File inFile = new File(path);
+        File outFile = new File(path + ".bak");
+
+        BufferedReader br = null;
+        String readedLine;
+        BufferedWriter bw = null;
+        try {
+            FileWriter fw = new FileWriter(outFile);
+            bw = new BufferedWriter(fw);
+            if (!outFile.exists()) {
+                outFile.createNewFile();
+            }
+            br = new BufferedReader(new FileReader(inFile));
+            int idx = 0;
+            while ((readedLine = br.readLine()) != null) {
+                if (readedLine.contains(args) ) {
+                    continue;
+                }
+                bw.write(readedLine + "\n");
+                if (idx++ == 100) {
+                    bw.flush();
+                    idx = 0;
+                }
+            }
+            bw.flush();
+            inFile.delete();
+            outFile.renameTo(inFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (bw != null) {
+                    bw.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
