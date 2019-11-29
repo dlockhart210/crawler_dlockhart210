@@ -34,7 +34,7 @@ public static String cookie=null;
                 sb.append(line);
             }
         } catch (Exception e) {
-            System.err.println("ans is miss!");
+            System.err.println("httpGet is miss!");
             return null;
         }
         return jp.parse(sb.toString()).getAsJsonObject();
