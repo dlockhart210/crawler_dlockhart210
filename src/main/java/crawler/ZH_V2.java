@@ -127,12 +127,13 @@ public class ZH_V2 {
                 ansidCount++;
                 String name = ans.getAsJsonObject().get("author").getAsJsonObject().get("member").getAsJsonObject().get("name").getAsString();
                 String userId = ans.getAsJsonObject().get("author").getAsJsonObject().get("member").getAsJsonObject().get("id").getAsString();
+                String content = ans.getAsJsonObject().get("content").getAsString();
                 if (!userId.equals("0")) {
                     if (userId.equals(map2.get(ansid))) {
                         continue;
                     }
                     map2.put(ansid, userId);
-                    FileUtil.writeFile(commitPath, ansid + "\t" + name + "\t" + userId);
+                    FileUtil.writeFile(commitPath, ansid + "\t" + name + "\t" + userId+ "\t" + content);
                     updates++;
                     if (blackList.contains(userId)) {
                         isTarget = true;
