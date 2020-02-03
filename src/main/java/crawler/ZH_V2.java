@@ -30,7 +30,7 @@ public class ZH_V2 {
     static long updates = 0;
 
     public static void main(String[] args) throws Exception {
-        HttpUtil.cookie = "_zap=edbb8c61-7467-4063-a3c9-508b41862eb3; _xsrf=410e0b3a-9cbf-4502-8c51-9a0b5afe9b5f; d_c0=\"AOAgC8YO2A-PTv4IKB-vWpCcFoHLC3C5Ams=|1564977425\"; z_c0=\"2|1:0|10:1565229119|4:z_c0|92:Mi4xVlUzWERnQUFBQUFBNENBTHhnN1lEeVlBQUFCZ0FsVk5QODQ0WGdEaHU2bXAwSWxtbVRCb2dLY3J3NEEyaGpwV29B|ff39fe9801927e6d643e0af9153d3d9c707ba4b64fd827351988b43bb4a689c2\"; anc_cap_id=7d30761695384ce79098fa26ea3f020f; q_c1=04554eb4930543a587760a7162f5e43c|1567295029000|1567295029000; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1571222003,1571309849,1571369335,1571382643; tgw_l7_route=80f350dcd7c650b07bd7b485fcab5bf7; tst=r; Hm_lpvt_98beee57fd2ef70ccdd5ca52b9740c49=1571799492";
+        HttpUtil.cookie = "_zap=edbb8c61-7467-4063-a3c9-508b41862eb3; _xsrf=410e0b3a-9cbf-4502-8c51-9a0b5afe9b5f; d_c0=\"AOAgC8YO2A-PTv4IKB-vWpCcFoHLC3C5Ams=|1564977425\"; z_c0=\"2|1:0|10:1565229119|4:z_c0|92:Mi4xVlUzWERnQUFBQUFBNENBTHhnN1lEeVlBQUFCZ0FsVk5QODQ0WGdEaHU2bXAwSWxtbVRCb2dLY3J3NEEyaGpwV29B|ff39fe9801927e6d643e0af9153d3d9c707ba4b64fd827351988b43bb4a689c2\"; anc_cap_id=7d30761695384ce79098fa26ea3f020f; q_c1=04554eb4930543a587760a7162f5e43c|1577538685000|1567295029000; Hm_lvt_98beee57fd2ef70ccdd5ca52b9740c49=1579492441,1579492809,1579572666,1579573429; Hm_lpvt_98beee57fd2ef70ccdd5ca52b9740c49=1579687060; tst=r; KLBRSID=975d56862ba86eb589d21e89c8d1e74e|1579687060|1579686994";
 
 
         fun();
@@ -87,7 +87,7 @@ public class ZH_V2 {
             } else {
                 boolean f = fun2(urlstr, ansId, Integer.parseInt(map.get(ansId)));
             }
-            if (err > 10) {
+            if (err > 3) {
                 System.out.println("ERR TOO MUCH!!");
                 return;
             }
