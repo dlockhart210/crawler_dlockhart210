@@ -19,7 +19,7 @@ public class ZH_V2 {
 
     static long quest = 0;
     static long err = 0;
-    static List<String> blackList = Arrays.asList("04607f4149ef669676ab27581da01855","24044eaed7d6ae80b90836201af5bdaa","d27446153f901d87cac9fbb0e85ca496");
+    static List<String> blackList = Arrays.asList("04607f4149ef669676ab27581da01855","8cd64b98838be91f3317b2cbffb88da5");
     static boolean isTarget = false;
 
     static long max = 1000;
