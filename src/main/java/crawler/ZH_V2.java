@@ -3,6 +3,8 @@ package crawler;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import util.FileUtil;
+import util.HttpUtil;
 
 import java.util.*;
 
@@ -12,14 +14,14 @@ import java.util.*;
  * @create 2019-08-04
  */
 public class ZH_V2 {
-    static String filepath = "/Users/mengjiedu/Downloads/";
+    static String filepath = "/Users/admin/Downloads/";
     static String ansPath = filepath + "zhihu_answers.txt";
     static String commitPath = filepath + "zhihu_commit.txt";
     static String ansCommitTimePath = filepath + "zh_ans_comm_time.txt";
 
     static long quest = 0;
     static long err = 0;
-    static List<String> blackList = Arrays.asList("04607f4149ef669676ab27581da01855","8cd64b98838be91f3317b2cbffb88da5");
+    static List<String> blackList = Arrays.asList("04607f4149ef669676ab27581da01855");
     static boolean isTarget = false;
 
     static long max = 1000;
@@ -36,10 +38,6 @@ public class ZH_V2 {
         fun();
         System.out.println(new Date().toString());
         if (isTarget) {
-            System.err.println("！！！！！！！GET IT！！！！！！！！！！！！");
-            System.err.println("！！！！！！！GET IT！！！！！！！！！！！！");
-            System.err.println("！！！！！！！GET IT！！！！！！！！！！！！");
-            System.err.println("！！！！！！！GET IT！！！！！！！！！！！！");
             System.err.println("！！！！！！！GET IT！！！！！！！！！！！！");
         }
 
@@ -137,7 +135,7 @@ public class ZH_V2 {
                     updates++;
                     if (blackList.contains(userId)) {
                         isTarget = true;
-                        System.err.println(userId);
+                        System.err.println("******************"+ansid + "\t" + name + "\t" + userId+ "\t" + content);
                     }
 //                System.out.println(ansid + "\t" + name + "\t" + userId);
                 }
@@ -147,66 +145,4 @@ public class ZH_V2 {
         return true;
     }
 
-
-//    public static boolean getCommitList(String urls, String ansid) throws Exception {
-//        JsonObject jo = HttpUtil.httpGet(urls);
-//        quest++;
-//        if (jo == null) {
-//            err++;
-//            return false;
-//        } else {
-//            err = 0;
-//        }
-//        String next = jo.get("paging").getAsJsonObject().get("next").getAsString();
-//        JsonArray anses = jo.get("data").getAsJsonArray();
-//        for (JsonElement ans : anses) {
-//            String name = ans.getAsJsonObject().get("author").getAsJsonObject().get("member").getAsJsonObject().get("name").getAsString();
-//            String userId = ans.getAsJsonObject().get("author").getAsJsonObject().get("member").getAsJsonObject().get("id").getAsString();
-//            if (!userId.equals("0")) {
-//                FileUtil.writeFile(commitPath, ansid + "\t" + name + "\t" + userId);
-//                if (blackList.contains(userId)) {
-//                    isTarget = true;
-//                    System.err.println(userId);
-//                }
-//            }
-//        }
-//        boolean b = jo.get("paging").getAsJsonObject().get("is_end").getAsBoolean();
-//        if (!b) {
-//            getCommitList(next, ansid);
-//        }
-//        return true;
-//    }
-
-//
-//    public static boolean getUser(String ansId, String userId2) throws Exception {
-//        String urls = "https://www.zhihu.com/api/v4/answers/" + ansId + "/comments?limit=20&offset=0&order=reverse&status=open";
-//        boolean b = true;
-//        while (b) {
-//            JsonObject jo = HttpUtil.httpGet(urls);
-//            quest++;
-//            if (jo == null) {
-//                err++;
-//                return false;
-//            } else {
-//                err = 0;
-//            }
-//            urls = jo.get("paging").getAsJsonObject().get("next").getAsString();
-//            JsonArray anses = jo.get("data").getAsJsonArray();
-//            int common_counts = jo.get("common_counts").getAsInt();
-//            String v = Integer.toString(common_counts);
-//
-//            for (JsonElement ans : anses) {
-//                String name = ans.getAsJsonObject().get("author").getAsJsonObject().get("member").getAsJsonObject().get("name").getAsString();
-//                String userId = ans.getAsJsonObject().get("author").getAsJsonObject().get("member").getAsJsonObject().get("id").getAsString();
-//                if (name.equals(userId2)) {
-//                    System.err.println(jo);
-//                    System.err.println(urls);
-//                    long updatetime = ans.getAsJsonObject().get("updated_time").getAsLong() * 1000;
-//                    String updateTimestr = new Date(updatetime).toString();
-//                    System.out.println(updateTimestr + "   " + ansId);                }
-//            }
-//            b = !jo.get("paging").getAsJsonObject().get("is_end").getAsBoolean();
-//        }
-//        return false;
-//    }
 }

@@ -1,5 +1,7 @@
 package crawler;
 
+import util.FileUtil;
+
 /**
  * @author dumengjie
  * @description
