@@ -38,8 +38,8 @@ public class JDBC {
             e.printStackTrace ( );
         }
     }
-    public static List<Map> query(String dbName, String sql){
-        List<Map> list =new ArrayList<>();
+    public static List<Map<String,String>> query(String dbName, String sql){
+        List<Map<String,String>> list =new ArrayList<>();
         try{
             Class.forName("org.sqlite.JDBC");
             Connection conn = DriverManager.getConnection("jdbc:sqlite:"+dbName+".db");
